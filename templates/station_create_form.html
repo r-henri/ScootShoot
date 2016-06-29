@@ -1,0 +1,12 @@
+<div style="text-align:center;">
+    <label>How many stations?</label>
+    <input type="number" id="stations_count_input" value="3" />
+    <button type="button" class="btn btn-primary" id="stations_create_button">Go!</button>
+    <script type="text/javascript">
+        $('#stations_count_input').keypress(function(e) {
+            if ('13' == e.which) {
+                $("#stations_create_button").click();
+            }
+        });
+    </script>
+</div>

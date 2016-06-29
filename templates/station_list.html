@@ -1,0 +1,142 @@
+<div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shooters_model">Manage Shooters</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#next_round_model" style="float:right;">Next Round</button>
+</div>
+<div style="text-align:center;font-weight:bold;margin-bottom:0.5em;">
+    Round <%= currentRound %>
+</div>
+<table class="table " id="station_table">
+    <tr>
+        <th>Station</th>
+        <th>Shooter</th>
+        <th></th>
+    </tr>
+</table>
+<div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shooter_log_model">Log</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm_delete_model" style="float:right;">Reset</button>
+</div>
+
+<!-- Shooter Grid Model -->
+<div class="modal fade" id="shooters_model" tabindex="-1" style="height:80%;margin:30px auto;" role="dialog">
+    <div class="modal-dialog" style="height:100%;margin-top:0px;margin-bottom:0px;" role="document">
+        <div class="modal-content" style="height:100%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Shooters</h4>
+            </div>
+            <div class="modal-body" style="overflow:auto;height:75%;">
+                <table class="table" id="shooter_table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" style="float:left;" data-toggle="modal" data-target="#new_shooter_model" aria-hidden="true">New Shooter</button>
+                <button data-dismiss="modal" class="btn btn-primary">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- New Shooter Model -->
+<div class="modal fade" id="new_shooter_model" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">New Shooter</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="shooter_name_input"></input>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                <button id="save_shooter_button" class="btn btn-primary">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $('#new_shooter_model').on('shown.bs.modal', function() {
+        $('#shooter_name_input').focus();
+    });
+    
+    $('#shooter_name_input').keypress(function(e) {
+        if ('13' == e.which) {
+            $("#save_shooter_button").click();
+        }
+    });
+</script>
+
+<!-- Delete Confirm Model -->
+<div class="modal fade" id="confirm_delete_model" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Confirm Delete</h4>
+            </div>
+            <div class="modal-body">
+                <p>You are about to delete all current shooter and station data, this procedure is irreversible.</p>
+                <p>Do you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                <button id="reset_button" class="btn btn-danger btn-ok">Delete</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Shooter Log Model -->
+<div class="modal fade" id="shooter_log_model" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Shooter Log</h4>
+            </div>
+            <div class="modal-body" style="overflow:auto; height:30em;">
+                <table class="table" id="shooter_log_table">
+                    <thead>
+                        <tr>
+                            <th>Round</th>
+                            <th>Station</th>
+                        </tr>
+                    </thead>                 
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-primary">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Next Round Confirm  Model -->
+<div class="modal fade" id="next_round_model" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Next Round</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Advance to the next round?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                <button id="next_round_button" class="btn btn-primary">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
